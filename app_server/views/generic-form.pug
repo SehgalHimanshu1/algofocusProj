@@ -1,0 +1,58 @@
+extends layout
+
+block script
+  script(src='/javascripts/jquery-3.3.1.min.js')
+  script(src='/javascripts/jquery-ui.min.js')
+  script.
+    $(init);
+    function init(){
+      $('#datefield').datepicker({
+        maxDate: '-18y'
+      });
+    }
+block style
+  link(rel='stylesheet', href='/stylesheets/jquery-ui.min.css')
+  style.
+    form {
+      width: 45%;
+      margin-left:auto;
+      margin-right: auto;
+      }
+    .element-container {
+      display: flex;
+      justify-content: center;
+    }
+    .element-container span {
+     flex: 1;
+    }
+    .element-container span:nth-child(n)  {text-align:right;}
+    .element-container span:nth-child(2n) {text-align:left;}
+    button {
+      width: 7em;
+      margin-left: 40%;
+    }
+block content
+  form(action='save-form' method='POST')
+    fieldset
+      legend Please input details
+      p.element-container
+        span
+          label(for='namefield') Name
+        span
+          input(type='text', id='namefield', name='name',  placeholder='Enter name', required)
+      p.element-container
+        span
+          label(for='datefield') Date of Birth
+        span
+          input(type='text', id='datefield', name='dob')
+      p.element-container
+        span
+          label(for='emailfield') Email
+        span
+          input(type='email', id='emailfield', name='email', placeholder='Enter email')
+      p.element-container
+        span
+          label(for='phonefield') Phone Number
+        span
+          input(type='tel' id='phonefield', name='phone' maxlength='10')
+      button submit

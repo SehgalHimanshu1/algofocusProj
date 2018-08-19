@@ -1,0 +1,14 @@
+extends layout
+block style
+  style.
+    dt, dd {float: left; margin:.7em;}
+    dt { font: 700 normal small-caps; clear: left;}
+block content
+  if (auth)
+    h1 Data you sent is below
+    dl
+      for value,key in data
+        dt= key
+        dd= value
+  else
+    h1 Sorry you inputted wrong phone number please get back to the form and try again
